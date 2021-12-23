@@ -8,9 +8,13 @@
 			<h2>days since a fire alarm went off</h2>
 		</center>
 		<script>
-			const lastFireAlarm = new Date('22 December 2021 16:27 PST');
-			const daysSince = (new Date() - lastFireAlarm) / 1000 / 60 / 60 / 24;
-			document.getElementById("days").innerHTML = daysSince.toString();
+			function update() {
+				const lastFireAlarm = new Date('22 December 2021 16:27 PST');
+				const daysSince = (new Date() - lastFireAlarm) / 1000 / 60 / 60 / 24;
+				document.getElementById("days").innerHTML = daysSince.toString();
+			}
+			update();
+			setInterval(update, 1000);
 		</script>
 	</body>
 </html>
