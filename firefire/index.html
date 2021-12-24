@@ -6,12 +6,22 @@
 		<center>
 			<h1 id="days">Unknown</h1>
 			<h2>days since a fire alarm went off</h2>
+			<h1 id="perDay">Unknown</h1>
+			<h2>per day since we started keeping track on</h2>
+			<h2 id="startedKeepingTrack">unknown</h2>
 		</center>
 		<script>
+			const fireAlarms = [
+				new Date('22 December 2021 16:27 PST'),
+			];
+			const startedKeepingTrack = new Date('22 December 2021 16:27 PST');
 			function update() {
-				const lastFireAlarm = new Date('22 December 2021 16:27 PST');
-				const daysSince = (new Date() - lastFireAlarm) / 1000 / 60 / 60 / 24;
+				const rightNow = new Date();
+				const daysSince = (rightNow - fireAlarms[fireAlarms.length - 1]) / 1000 / 60 / 60 / 24;
 				document.getElementById("days").innerHTML = daysSince.toString();
+				const perDay = fireAlarms.length / ((rightNow - startedKeepingTrack) / 1000 / 60 / 60 / 24);
+				document.getElementById("perDay").innerHTML = perDay.toString();
+				document.getElementById("startedKeepingTrack").innerHTML = startedKeepingTrack.toDateString();
 			}
 			update();
 			setInterval(update, 1000);
